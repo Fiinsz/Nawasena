@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - KKM NAWASENA</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body>
+    <!-- Login Form (shown if not logged in) -->
+    <div class="login-container" id="loginContainer">
+        <div class="login-card">
+            <h2>Admin Login</h2>
+            <p class="text-center text-light" style="margin-bottom: 2rem;">KKM NAWASENA - Kelompok 97</p>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <p class="text-center text-light" style="margin-top: 1rem; font-size: 0.85rem;">
+                Default: admin / nawasena2026
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard (shown if logged in) -->
+    <div id="adminDashboard" style="display: none;">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="navbar-logo">
+                    <h2>Admin <span>NAWASENA</span></h2>
+                </div>
+                
+                <ul class="navbar-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="#" onclick="logout()" style="color: #ff6b6b;">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <section class="pt-xl pb-xl">
+            <div class="container">
+                <div class="admin-header">
+                    <div>
+                        <h2 style="margin: 0; color: white;">Dashboard Admin</h2>
+                        <p style="margin: 0; color: rgba(255,255,255,0.8);">Kelola konten website KKM NAWASENA</p>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="admin-tabs">
+                    <button class="admin-tab active" onclick="showTab('artikel')">Artikel</button>
+                    <button class="admin-tab" onclick="showTab('post')">Post</button>
+                </div>
+
+                <!-- Artikel Tab -->
+                <div id="artikelTab" class="admin-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h3>Kelola Artikel</h3>
+                        <button class="btn btn-primary" onclick="showArtikelForm()">+ Tambah Artikel</button>
+                    </div>
+
+                    <!-- Artikel Form (hidden by default) -->
+                    <div id="artikelForm" style="display: none; margin-bottom: 2rem; padding: 1.5rem; background: var(--bg-color); border-radius: var(--radius-md);">
+                        <h4>Tambah/Edit Artikel</h4>
+                        <form onsubmit="saveArtikel(event)">
+                            <input type="hidden" id="artikelId">
+                            <div class="form-group">
+                                <label class="form-label">Judul</label>
+                                <input type="text" id="artikelTitle" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Ringkasan</label>
+                                <textarea id="artikelExcerpt" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Konten</label>
+                                <textarea id="artikelContent" class="form-control" style="min-height: 200px;" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Kategori</label>
+                                <select id="artikelKategori" class="form-control" required>
+                                    <option value="Berita">Berita</option>
+                                    <option value="Program">Program</option>
+                                    <option value="Kegiatan">Kegiatan</option>
+                                    <option value="Pengumuman">Pengumuman</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Penulis</label>
+                                <input type="text" id="artikelAuthor" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">URL Gambar</label>
+                                <input type="url" id="artikelImage" class="form-control" placeholder="https://...">
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="button" class="btn btn-outline" onclick="cancelArtikelForm()">Batal</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Artikel Table -->
+                    <div style="overflow-x: auto;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Judul</th>
+                                    <th>Kategori</th>
+                                    <th>Penulis</th>
+                                    <th>Tanggal</th>
+                                    <th>Views</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="artikelTableBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Post Tab -->
+                <div id="postTab" class="admin-content" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h3>Kelola Post</h3>
+                        <button class="btn btn-primary" onclick="showPostForm()">+ Tambah Post</button>
+                    </div>
+
+                    <!-- Post Form (hidden by default) -->
+                    <div id="postForm" style="display: none; margin-bottom: 2rem; padding: 1.5rem; background: var(--bg-color); border-radius: var(--radius-md);">
+                        <h4>Tambah/Edit Post</h4>
+                        <form onsubmit="savePost(event)">
+                            <input type="hidden" id="postId">
+                            <div class="form-group">
+                                <label class="form-label">Caption</label>
+                                <textarea id="postCaption" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Penulis</label>
+                                <input type="text" id="postAuthor" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">URL Gambar</label>
+                                <input type="url" id="postImage" class="form-control" placeholder="https://...">
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="button" class="btn btn-outline" onclick="cancelPostForm()">Batal</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Post Table -->
+                    <div style="overflow-x: auto;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Caption</th>
+                                    <th>Penulis</th>
+                                    <th>Tanggal</th>
+                                    <th>Likes</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="postTableBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/storage.js"></script>
+    <script>
+        // Check if logged in on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (isLoggedIn()) {
+                showDashboard();
+            }
+        });
+
+        // Handle Login
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (login(username, password)) {
+                showAlert('Login berhasil!', 'success');
+                showDashboard();
+            } else {
+                showAlert('Username atau password salah!', 'danger');
+            }
+        }
+
+        // Show Dashboard
+        function showDashboard() {
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('adminDashboard').style.display = 'block';
+            loadArtikelTable();
+            loadPostTable();
+        }
+
+        // Show Tab
+        function showTab(tabName) {
+            document.querySelectorAll('.admin-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.admin-content').forEach(content => content.style.display = 'none');
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName + 'Tab').style.display = 'block';
+        }
+
+        // ==== ARTIKEL FUNCTIONS ====
+        
+        function loadArtikelTable() {
+            const tbody = document.getElementById('artikelTableBody');
+            const artikel = Storage.getArtikel();
+            
+            tbody.innerHTML = artikel.map(a => `
+                <tr>
+                    <td style="max-width: 300px;">${a.title}</td>
+                    <td><span class="badge badge-primary">${a.kategori}</span></td>
+                    <td>${a.author}</td>
+                    <td>${a.date}</td>
+                    <td>${a.views || 0}</td>
+                    <td class="admin-actions">
+                        <button class="btn btn-sm btn-secondary" onclick="editArtikel('${a.id}')">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteArtikel('${a.id}')">Hapus</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function showArtikelForm() {
+            document.getElementById('artikelForm').style.display = 'block';
+            document.getElementById('artikelId').value = '';
+            document.getElementById('artikelTitle').value = '';
+            document.getElementById('artikelExcerpt').value = '';
+            document.getElementById('artikelContent').value = '';
+            document.getElementById('artikelKategori').value = 'Berita';
+            document.getElementById('artikelAuthor').value = '';
+            document.getElementById('artikelImage').value = '';
+        }
+
+        function cancelArtikelForm() {
+            document.getElementById('artikelForm').style.display = 'none';
+        }
+
+        function saveArtikel(event) {
+            event.preventDefault();
+            
+            const id = document.getElementById('artikelId').value;
+            const data = {
+                title: document.getElementById('artikelTitle').value,
+                excerpt: document.getElementById('artikelExcerpt').value,
+                content: document.getElementById('artikelContent').value,
+                kategori: document.getElementById('artikelKategori').value,
+                author: document.getElementById('artikelAuthor').value,
+                image: document.getElementById('artikelImage').value
+            };
+            
+            if (id) {
+                Storage.updateArtikel(id, data);
+                showAlert('Artikel berhasil diupdate!', 'success');
+            } else {
+                Storage.createArtikel(data);
+                showAlert('Artikel berhasil ditambahkan!', 'success');
+            }
+            
+            cancelArtikelForm();
+            loadArtikelTable();
+        }
+
+        function editArtikel(id) {
+            const artikel = Storage.getArtikelById(id);
+            if (!artikel) return;
+            
+            document.getElementById('artikelForm').style.display = 'block';
+            document.getElementById('artikelId').value = artikel.id;
+            document.getElementById('artikelTitle').value = artikel.title;
+            document.getElementById('artikelExcerpt').value = artikel.excerpt;
+            document.getElementById('artikelContent').value = artikel.content;
+            document.getElementById('artikelKategori').value = artikel.kategori;
+            document.getElementById('artikelAuthor').value = artikel.author;
+            document.getElementById('artikelImage').value = artikel.image;
+        }
+
+        function deleteArtikel(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus artikel ini?')) {
+                Storage.deleteArtikel(id);
+                showAlert('Artikel berhasil dihapus!', 'success');
+                loadArtikelTable();
+            }
+        }
+
+        // ==== POST FUNCTIONS ====
+        
+        function loadPostTable() {
+            const tbody = document.getElementById('postTableBody');
+            const posts = Storage.getPosts();
+            
+            tbody.innerHTML = posts.map(p => `
+                <tr>
+                    <td style="max-width: 400px;">${p.caption}</td>
+                    <td>${p.author}</td>
+                    <td>${p.date}</td>
+                    <td>${p.likes || 0}</td>
+                    <td class="admin-actions">
+                        <button class="btn btn-sm btn-secondary" onclick="editPost('${p.id}')">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="deletePost('${p.id}')">Hapus</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function showPostForm() {
+            document.getElementById('postForm').style.display = 'block';
+            document.getElementById('postId').value = '';
+            document.getElementById('postCaption').value = '';
+            document.getElementById('postAuthor').value = '';
+            document.getElementById('postImage').value = '';
+        }
+
+        function cancelPostForm() {
+            document.getElementById('postForm').style.display = 'none';
+        }
+
+        function savePost(event) {
+            event.preventDefault();
+            
+            const id = document.getElementById('postId').value;
+            const data = {
+                caption: document.getElementById('postCaption').value,
+                author: document.getElementById('postAuthor').value,
+                image: document.getElementById('postImage').value
+            };
+            
+            if (id) {
+                Storage.updatePost(id, data);
+                showAlert('Post berhasil diupdate!', 'success');
+            } else {
+                Storage.createPost(data);
+                showAlert('Post berhasil ditambahkan!', 'success');
+            }
+            
+            cancelPostForm();
+            loadPostTable();
+        }
+
+        function editPost(id) {
+            const post = Storage.getPostById(id);
+            if (!post) return;
+            
+            document.getElementById('postForm').style.display = 'block';
+            document.getElementById('postId').value = post.id;
+            document.getElementById('postCaption').value = post.caption;
+            document.getElementById('postAuthor').value = post.author;
+            document.getElementById('postImage').value = post.image;
+        }
+
+        function deletePost(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus post ini?')) {
+                Storage.deletePost(id);
+                showAlert('Post berhasil dihapus!', 'success');
+                loadPostTable();
+            }
+        }
+    </script>
+</body>
+</html>

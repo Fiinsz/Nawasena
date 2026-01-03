@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Artikel - KKM NAWASENA</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <h2>KKM <span>NAWASENA</span></h2>
+            </div>
+            
+            <button class="navbar-toggle" id="navbarToggle">
+                ☰
+            </button>
+            
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="../index.html">Home</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Profil</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">Tentang KKM</a></li>
+                        <li><a href="wilayah.html">Profil Wilayah</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Konten</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="program.html">Program Kerja</a></li>
+                        <li><a href="artikel.html" class="active">Berita & Artikel</a></li>
+                        <li><a href="post.html">Post Kegiatan</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="tim.html">Tim KKM</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="artikel.html">Berita & Artikel</a></li>
+                <li id="breadcrumbTitle">Detail</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="pt-xl pb-xl">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Back Button -->
+                <div style="margin-bottom: 2rem;">
+                    <a href="artikel.html" class="btn btn-outline">← Kembali ke Artikel</a>
+                </div>
+
+                <!-- Article Detail -->
+                <article id="artikelDetail">
+                    <!-- Content will be loaded by JavaScript -->
+                </article>
+
+                <!-- Not Found State -->
+                <div id="notFoundState" class="text-center" style="display: none; padding: 3rem;">
+                    <h2>Artikel Tidak Ditemukan</h2>
+                    <p>Artikel yang Anda cari tidak tersedia.</p>
+                    <a href="artikel.html" class="btn btn-primary">Kembali ke Artikel</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>KKM NAWASENA</h3>
+                <p>Kelompok 97</p>
+                <p>Desa Dengkol, Dusun Sumbersari<br>Singosari, Malang<br>Jawa Timur</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Menu</h3>
+                <a href="about.html">Tentang KKM</a>
+                <a href="program.html">Program Kerja</a>
+                <a href="artikel.html">Berita & Artikel</a>
+                <a href="tim.html">Tim KKM</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p>Email: kkmnawasena97@gmail.com</p>
+                <p>WhatsApp: +62 812-3456-7890</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="YouTube">📹</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Dosen Pembimbing</h3>
+                <p><strong>Muhammad Muhsin Arumawan, M.Pd.I</strong></p>
+                <p>Dosen Pembimbing Lapangan (DPL)</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 KKM NAWASENA Kelompok 97. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/storage.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const artikelId = urlParams.get('id');
+            
+            if (!artikelId) {
+                showNotFound();
+                return;
+            }
+            
+            const article = Storage.getArtikelById(artikelId);
+            
+            if (!article) {
+                showNotFound();
+                return;
+            }
+            
+            // Increment views
+            Storage.incrementArtikelViews(artikelId);
+            
+            // Update page title and breadcrumb
+            document.title = article.title + ' - KKM NAWASENA';
+            document.getElementById('breadcrumbTitle').textContent = article.title;
+            
+            // Render article
+            renderArticle(article);
+        });
+
+        function renderArticle(article) {
+            const artikelDetail = document.getElementById('artikelDetail');
+            
+            artikelDetail.innerHTML = `
+                <div class="artikel-detail-header">
+                    <span class="badge badge-primary" style="margin-bottom: 1rem;">${article.kategori}</span>
+                    <h1>${article.title}</h1>
+                    <div class="artikel-detail-meta">
+                        <span>📅 ${article.date}</span>
+                        <span>👤 ${article.author}</span>
+                        <span>👁 ${article.views || 0} views</span>
+                    </div>
+                </div>
+                
+                <img src="${article.image}" alt="${article.title}" class="artikel-detail-img" onerror="this.src='https://via.placeholder.com/800x400?text=Artikel'">
+                
+                <div class="artikel-detail-content">
+                    ${article.content}
+                </div>
+                
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <strong>Penulis:</strong> ${article.author}<br>
+                            <strong>Kategori:</strong> ${article.kategori}
+                        </div>
+                        <div>
+                            <a href="artikel.html" class="btn btn-secondary">Lihat Artikel Lainnya</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showNotFound() {
+            document.getElementById('artikelDetail').style.display = 'none';
+            document.getElementById('notFoundState').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim KKM NAWASENA - Kelompok 97</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <h2>KKM <span>NAWASENA</span></h2>
+            </div>
+            
+            <button class="navbar-toggle" id="navbarToggle">
+                ☰
+            </button>
+            
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="../index.html">Home</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Profil</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">Tentang KKM</a></li>
+                        <li><a href="wilayah.html">Profil Wilayah</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Konten</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="program.html">Program Kerja</a></li>
+                        <li><a href="artikel.html">Berita & Artikel</a></li>
+                        <li><a href="post.html">Post Kegiatan</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="tim.html" class="active">Tim KKM</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="../index.html">Home</a></li>
+                <li>Tim KKM</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in">Tim KKM NAWASENA</h1>
+            <p class="fade-in">14 Mahasiswa dari Berbagai Fakultas Bersatu untuk Mengabdi</p>
+        </div>
+    </section>
+
+    <!-- Team Grid -->
+    <section class="pt-xl pb-xl">
+        <div class="container">
+            <div class="section-header">
+                <h2>Anggota Kelompok 97</h2>
+                <p>Multidisiplin untuk Pemberdayaan Masyarakat</p>
+            </div>
+
+            <div class="grid grid-4" id="teamGrid">
+                <!-- Team members will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Modal -->
+    <div class="modal" id="teamModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Detail Anggota</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <img id="modalImage" src="" alt="" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 5px solid var(--secondary-color);">
+                </div>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>KKM NAWASENA</h3>
+                <p>Kelompok 97</p>
+                <p>Desa Dengkol, Dusun Sumbersari<br>Singosari, Malang<br>Jawa Timur</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Menu</h3>
+                <a href="about.html">Tentang KKM</a>
+                <a href="program.html">Program Kerja</a>
+                <a href="artikel.html">Berita & Artikel</a>
+                <a href="tim.html">Tim KKM</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p>Email: kkmnawasena97@gmail.com</p>
+                <p>WhatsApp: +62 812-3456-7890</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="YouTube">📹</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Dosen Pembimbing</h3>
+                <p><strong>Muhammad Muhsin Arumawan, M.Pd.I</strong></p>
+                <p>Dosen Pembimbing Lapangan (DPL)</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 KKM NAWASENA Kelompok 97. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        // Data Tim KKM NAWASENA - 14 Anggota
+        const teamMembers = [
+            {
+                id: 1,
+                name: "Kartika",
+                prodi: "Manajemen",
+                fakultas: "Ekonomi",
+                role: "Koordinator Tim",
+                bio: "Bertanggung jawab dalam koordinasi kegiatan dan manajemen tim KKM NAWASENA Kelompok 97.",
+                keahlian: ["Leadership", "Project Management", "Public Speaking"],
+                image: "https://via.placeholder.com/300?text=Kartika"
+            },
+            {
+                id: 2,
+                name: "Muhammad Arifin",
+                prodi: "Teknik Informatika",
+                fakultas: "Saintek",
+                role: "Tim Teknologi & Dokumentasi",
+                bio: "Mengelola website, dokumentasi digital, dan pengembangan sistem informasi untuk kegiatan KKM.",
+                keahlian: ["Web Development", "Database", "Digital Documentation"],
+                image: "https://via.placeholder.com/300?text=M.Arifin"
+            },
+            {
+                id: 3,
+                name: "Idris",
+                prodi: "Hukum Tata Negara",
+                fakultas: "Syariah",
+                role: "Tim Advokasi & Hukum",
+                bio: "Membantu dalam aspek hukum dan advokasi masyarakat serta penyusunan regulasi kegiatan.",
+                keahlian: ["Legal Advocation", "Community Rights", "Policy Making"],
+                image: "https://via.placeholder.com/300?text=Idris"
+            },
+            {
+                id: 4,
+                name: "Nafa",
+                prodi: "Akuntansi",
+                fakultas: "Ekonomi",
+                role: "Bendahara & Keuangan",
+                bio: "Mengelola keuangan, membuat laporan keuangan, dan mengatur anggaran program KKM.",
+                keahlian: ["Financial Management", "Accounting", "Budgeting"],
+                image: "https://via.placeholder.com/300?text=Nafa"
+            },
+            {
+                id: 5,
+                name: "Dina",
+                prodi: "Hukum Tata Negara",
+                fakultas: "Syariah",
+                role: "Tim Advokasi & Pemberdayaan",
+                bio: "Fokus pada pemberdayaan masyarakat melalui pendekatan hukum dan sosial kemasyarakatan.",
+                keahlian: ["Community Empowerment", "Legal Framework", "Social Development"],
+                image: "https://via.placeholder.com/300?text=Dina"
+            },
+            {
+                id: 6,
+                name: "Almay",
+                prodi: "Hukum Ekonomi Syariah",
+                fakultas: "Syariah",
+                role: "Tim Ekonomi Kreatif",
+                bio: "Mengembangkan potensi ekonomi kreatif masyarakat dengan prinsip syariah.",
+                keahlian: ["Islamic Economics", "Creative Economy", "Business Development"],
+                image: "https://via.placeholder.com/300?text=Almay"
+            },
+            {
+                id: 7,
+                name: "Khamalia",
+                prodi: "Teknik Arsitektur",
+                fakultas: "Saintek",
+                role: "Tim Infrastruktur & Desain",
+                bio: "Merancang dan mengembangkan infrastruktur serta penataan lingkungan desa.",
+                keahlian: ["Architecture Design", "Urban Planning", "Infrastructure Development"],
+                image: "https://via.placeholder.com/300?text=Khamalia"
+            },
+            {
+                id: 8,
+                name: "Fifi",
+                prodi: "Hukum Ekonomi Syariah",
+                fakultas: "Syariah",
+                role: "Tim Ekonomi Syariah",
+                bio: "Memberikan edukasi dan pendampingan dalam pengelolaan ekonomi berbasis syariah.",
+                keahlian: ["Sharia Finance", "Economic Literacy", "Community Training"],
+                image: "https://via.placeholder.com/300?text=Fifi"
+            },
+            {
+                id: 9,
+                name: "M. Mu'ti Ali Firmansyah",
+                prodi: "Perpustakaan & Sains Informasi",
+                fakultas: "Saintek",
+                role: "Tim Literasi & Informasi",
+                bio: "Mengembangkan literasi masyarakat dan mengelola sistem informasi perpustakaan desa.",
+                keahlian: ["Information Management", "Library Science", "Digital Literacy"],
+                image: "https://via.placeholder.com/300?text=Muti"
+            },
+            {
+                id: 10,
+                name: "Amrina Rosyada",
+                prodi: "Bahasa dan Sastra Arab",
+                fakultas: "Humaniora",
+                role: "Tim Pendidikan & Budaya",
+                bio: "Mengembangkan program pendidikan bahasa dan pelestarian budaya lokal.",
+                keahlian: ["Arabic Language", "Cultural Education", "Teaching Methods"],
+                image: "https://via.placeholder.com/300?text=Amrina"
+            },
+            {
+                id: 11,
+                name: "Mentari",
+                prodi: "Ilmu Al-Qur'an dan Tafsir",
+                fakultas: "Syariah",
+                role: "Tim Dakwah & Keagamaan",
+                bio: "Memberikan bimbingan keagamaan dan kajian Al-Qur'an untuk masyarakat.",
+                keahlian: ["Quranic Studies", "Islamic Teaching", "Religious Guidance"],
+                image: "https://via.placeholder.com/300?text=Mentari"
+            },
+            {
+                id: 12,
+                name: "Arif Abdillah",
+                prodi: "Manajemen",
+                fakultas: "Ekonomi",
+                role: "Tim Manajemen Program",
+                bio: "Membantu koordinasi dan manajemen pelaksanaan program kerja KKM.",
+                keahlian: ["Program Management", "Event Planning", "Team Coordination"],
+                image: "https://via.placeholder.com/300?text=Arif"
+            },
+            {
+                id: 13,
+                name: "Vina",
+                prodi: "Teknik Informatika",
+                fakultas: "Saintek",
+                role: "Tim Teknologi & Media",
+                bio: "Mengelola media sosial, dokumentasi digital, dan pengembangan teknologi.",
+                keahlian: ["Social Media Management", "Digital Content", "IT Support"],
+                image: "https://via.placeholder.com/300?text=Vina"
+            },
+            {
+                id: 14,
+                name: "Royyan",
+                prodi: "Bahasa dan Sastra Arab",
+                fakultas: "Humaniora",
+                role: "Tim Komunikasi & Publikasi",
+                bio: "Bertanggung jawab dalam komunikasi publik dan publikasi kegiatan KKM.",
+                keahlian: ["Public Communication", "Content Writing", "Translation"],
+                image: "https://via.placeholder.com/300?text=Royyan"
+            }
+        ];
+
+        // Render Team Grid
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamGrid = document.getElementById('teamGrid');
+            
+            teamGrid.innerHTML = teamMembers.map(member => `
+                <div class="card team-card fade-in" onclick="showTeamDetail(${member.id})">
+                    <img src="${member.image}" alt="${member.name}" class="team-card-img" onerror="this.src='https://via.placeholder.com/300?text=${member.name}'">
+                    <div class="card-body">
+                        <h4>${member.name}</h4>
+                        <p class="team-card-prodi">${member.prodi}</p>
+                        <p class="team-card-fakultas">Fakultas ${member.fakultas}</p>
+                        <span class="badge badge-secondary" style="margin-top: 0.5rem;">${member.role}</span>
+                    </div>
+                </div>
+            `).join('');
+        });
+
+        // Show Team Detail Modal
+        function showTeamDetail(id) {
+            const member = teamMembers.find(m => m.id === id);
+            if (!member) return;
+
+            const modal = document.getElementById('teamModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalImage = document.getElementById('modalImage');
+            const modalContent = document.getElementById('modalContent');
+
+            modalTitle.textContent = member.name;
+            modalImage.src = member.image;
+            modalImage.alt = member.name;
+
+            modalContent.innerHTML = `
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Informasi</h4>
+                    <p><strong>Prodi:</strong> ${member.prodi}</p>
+                    <p><strong>Fakultas:</strong> ${member.fakultas}</p>
+                    <p><strong>Role:</strong> ${member.role}</p>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Deskripsi</h4>
+                    <p>${member.bio}</p>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Keahlian</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        ${member.keahlian.map(skill => `<span class="badge badge-primary">${skill}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        // Close Modal
+        document.getElementById('modalClose').addEventListener('click', function() {
+            document.getElementById('teamModal').classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('teamModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

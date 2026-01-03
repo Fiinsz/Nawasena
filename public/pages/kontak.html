@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - KKM NAWASENA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo"><h2>KKM <span>NAWASENA</span></h2></div>
+            <button class="navbar-toggle" id="navbarToggle">☰</button>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Profil</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">Tentang KKM</a></li>
+                        <li><a href="wilayah.html">Profil Wilayah</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Konten</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="program.html">Program Kerja</a></li>
+                        <li><a href="artikel.html">Berita & Artikel</a></li>
+                        <li><a href="post.html">Post Kegiatan</a></li>
+                    </ul>
+                </li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="tim.html">Tim KKM</a></li>
+                <li><a href="kontak.html" class="active">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="../index.html">Home</a></li>
+                <li>Kontak</li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in">Hubungi Kami</h1>
+            <p class="fade-in">Kami siap menjawab pertanyaan dan saran Anda</p>
+        </div>
+    </section>
+
+    <section class="pt-xl pb-xl">
+        <div class="container">
+            <div class="kontak-container">
+                <div class="kontak-info fade-in">
+                    <h3>Informasi Kontak</h3>
+                    <p style="margin-bottom: 2rem;">Jangan ragu untuk menghubungi kami melalui informasi di bawah ini:</p>
+                    
+                    <div class="kontak-item">
+                        <div class="kontak-item-icon">📧</div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>kkmnawasena97@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="kontak-item">
+                        <div class="kontak-item-icon">📱</div>
+                        <div>
+                            <h5>WhatsApp</h5>
+                            <p>+62 812-3456-7890</p>
+                        </div>
+                    </div>
+
+                    <div class="kontak-item">
+                        <div class="kontak-item-icon">📍</div>
+                        <div>
+                            <h5>Alamat</h5>
+                            <p>Desa Dengkol, Dusun Sumbersari<br>Singosari, Malang<br>Jawa Timur</p>
+                        </div>
+                    </div>
+
+                    <div class="kontak-item">
+                        <div class="kontak-item-icon">📷</div>
+                        <div>
+                            <h5>Media Sosial</h5>
+                            <div class="social-links" style="margin-top: 0.5rem;">
+                                <a href="#" title="Instagram">📷</a>
+                                <a href="#" title="Facebook">📘</a>
+                                <a href="#" title="Twitter">🐦</a>
+                                <a href="#" title="YouTube">📹</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kontak-form fade-in">
+                    <h3>Kirim Pesan</h3>
+                    <form onsubmit="handleContactForm(event)">
+                        <div class="form-group">
+                            <label class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subjek</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Pesan</label>
+                            <textarea class="form-control" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mt-xl">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center">Dosen Pembimbing Lapangan</h3>
+                        <div style="text-align: center; margin-top: 1.5rem;">
+                            <h4 style="color: var(--primary-color);">Muhammad Muhsin Arumawan, M.Pd.I</h4>
+                            <p>Dosen Pembimbing Lapangan (DPL)</p>
+                            <p>Universitas Islam Negeri (UIN)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>KKM NAWASENA</h3>
+                <p>Kelompok 97</p>
+                <p>Desa Dengkol, Dusun Sumbersari<br>Singosari, Malang<br>Jawa Timur</p>
+            </div>
+            <div class="footer-section">
+                <h3>Menu</h3>
+                <a href="about.html">Tentang KKM</a>
+                <a href="program.html">Program Kerja</a>
+                <a href="artikel.html">Berita & Artikel</a>
+                <a href="tim.html">Tim KKM</a>
+            </div>
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p>Email: kkmnawasena97@gmail.com</p>
+                <p>WhatsApp: +62 812-3456-7890</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="YouTube">📹</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Dosen Pembimbing</h3>
+                <p><strong>Muhammad Muhsin Arumawan, M.Pd.I</strong></p>
+                <p>Dosen Pembimbing Lapangan (DPL)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 KKM NAWASENA Kelompok 97. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        function handleContactForm(event) {
+            event.preventDefault();
+            showAlert('Terima kasih! Pesan Anda telah dikirim.', 'success');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

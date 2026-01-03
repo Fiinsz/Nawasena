@@ -1,0 +1,227 @@
+/* ====================================================
+   BASE.CSS - Reset, Variables, Typography
+   KKM NAWASENA - Kelompok 97
+   ==================================================== */
+
+/* === CSS RESET === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', 'Lato', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: var(--bg-color);
+}
+
+/* === CSS VARIABLES (Earth Tone Theme) === */
+:root {
+    /* Primary Colors */
+    --primary-color: #5C4033;
+    --secondary-color: #A47551;
+    --bg-color: #F5F0E6;
+    
+    /* Accent & Neutral */
+    --accent-light: #D4C5B3;
+    --white: #FFFFFF;
+    --text-dark: #2C2C2C;
+    --text-light: #6B6B6B;
+    --border-color: #D0D0D0;
+    
+    /* Status Colors */
+    --success: #6B8E23;
+    --warning: #DAA520;
+    --danger: #B8654F;
+    --info: #5B9AA0;
+    
+    /* Shadows & Transitions */
+    --shadow-sm: 0 2px 4px rgba(92, 64, 51, 0.1);
+    --shadow-md: 0 4px 8px rgba(92, 64, 51, 0.15);
+    --shadow-lg: 0 8px 16px rgba(92, 64, 51, 0.2);
+    --transition: all 0.3s ease;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    
+    /* Container Width */
+    --container-width: 1200px;
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+    line-height: 1.3;
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+/* === UTILITY CLASSES === */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.text-light {
+    color: var(--text-light);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.bg-light {
+    background-color: var(--bg-color);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+.pt-sm { padding-top: var(--spacing-sm); }
+.pt-md { padding-top: var(--spacing-md); }
+.pt-lg { padding-top: var(--spacing-lg); }
+.pt-xl { padding-top: var(--spacing-xl); }
+
+.pb-sm { padding-bottom: var(--spacing-sm); }
+.pb-md { padding-bottom: var(--spacing-md); }
+.pb-lg { padding-bottom: var(--spacing-lg); }
+.pb-xl { padding-bottom: var(--spacing-xl); }
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+    
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+/* === SCROLLBAR STYLING === */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: var(--radius-md);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}

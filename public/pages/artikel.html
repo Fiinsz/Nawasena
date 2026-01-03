@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita & Artikel - KKM NAWASENA</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <h2>KKM <span>NAWASENA</span></h2>
+            </div>
+            
+            <button class="navbar-toggle" id="navbarToggle">
+                ☰
+            </button>
+            
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="../index.html">Home</a></li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Profil</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">Tentang KKM</a></li>
+                        <li><a href="wilayah.html">Profil Wilayah</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Konten</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="program.html">Program Kerja</a></li>
+                        <li><a href="artikel.html" class="active">Berita & Artikel</a></li>
+                        <li><a href="post.html">Post Kegiatan</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="tim.html">Tim KKM</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-list">
+                <li><a href="../index.html">Home</a></li>
+                <li>Berita & Artikel</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="fade-in">Berita & Artikel</h1>
+            <p class="fade-in">Informasi dan Dokumentasi Kegiatan KKM NAWASENA</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="pt-xl pb-xl">
+        <div class="container">
+            <!-- Search & Filter -->
+            <div style="margin-bottom: 2rem;">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Cari artikel..." style="flex: 1; min-width: 250px;">
+                    <button class="btn btn-primary" onclick="searchArtikel()">🔍 Cari</button>
+                </div>
+                
+                <div class="artikel-filters">
+                    <button class="filter-btn active" data-category="Semua" onclick="filterByCategory('Semua')">Semua</button>
+                    <button class="filter-btn" data-category="Berita" onclick="filterByCategory('Berita')">Berita</button>
+                    <button class="filter-btn" data-category="Program" onclick="filterByCategory('Program')">Program</button>
+                    <button class="filter-btn" data-category="Kegiatan" onclick="filterByCategory('Kegiatan')">Kegiatan</button>
+                    <button class="filter-btn" data-category="Pengumuman" onclick="filterByCategory('Pengumuman')">Pengumuman</button>
+                </div>
+            </div>
+
+            <!-- Artikel Grid -->
+            <div class="artikel-grid" id="artikelGrid">
+                <!-- Artikel will be loaded by JavaScript -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="text-center" style="display: none; padding: 3rem;">
+                <h3>Tidak ada artikel ditemukan</h3>
+                <p>Coba ubah filter atau kata kunci pencarian Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>KKM NAWASENA</h3>
+                <p>Kelompok 97</p>
+                <p>Desa Dengkol, Dusun Sumbersari<br>Singosari, Malang<br>Jawa Timur</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Menu</h3>
+                <a href="about.html">Tentang KKM</a>
+                <a href="program.html">Program Kerja</a>
+                <a href="artikel.html">Berita & Artikel</a>
+                <a href="tim.html">Tim KKM</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p>Email: kkmnawasena97@gmail.com</p>
+                <p>WhatsApp: +62 812-3456-7890</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="Twitter">🐦</a>
+                    <a href="#" title="YouTube">📹</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Dosen Pembimbing</h3>
+                <p><strong>Muhammad Muhsin Arumawan, M.Pd.I</strong></p>
+                <p>Dosen Pembimbing Lapangan (DPL)</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 KKM NAWASENA Kelompok 97. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/storage.js"></script>
+    <script>
+        let currentCategory = 'Semua';
+
+        // Load All Artikel
+        function loadArtikel(articles = null) {
+            const artikelGrid = document.getElementById('artikelGrid');
+            const emptyState = document.getElementById('emptyState');
+            const data = articles || Storage.getArtikel();
+            
+            if (data.length === 0) {
+                artikelGrid.style.display = 'none';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            artikelGrid.style.display = 'grid';
+            emptyState.style.display = 'none';
+            
+            artikelGrid.innerHTML = data.map(article => `
+                <div class="card fade-in">
+                    <img src="${article.image}" alt="${article.title}" class="card-img" onerror="this.src='https://via.placeholder.com/400x200?text=Artikel'">
+                    <div class="card-body">
+                        <span class="badge badge-primary">${article.kategori}</span>
+                        <h3 class="card-title">${article.title}</h3>
+                        <p class="card-text">${article.excerpt}</p>
+                        <a href="artikel-detail.html?id=${article.id}" class="btn btn-primary btn-sm">Baca Selengkapnya</a>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-meta">
+                            <span>📅 ${article.date}</span>
+                            <span>👤 ${article.author}</span>
+                            <span>👁 ${article.views || 0}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter by Category
+        function filterByCategory(category) {
+            currentCategory = category;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter articles
+            const articles = Storage.getArtikelByCategory(category);
+            loadArtikel(articles);
+        }
+
+        // Search Artikel
+        function searchArtikel() {
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim();
+            
+            if (query) {
+                const results = Storage.searchArtikel(query);
+                loadArtikel(results);
+            } else {
+                loadArtikel();
+            }
+        }
+
+        // Enter key to search
+        document.addEventListener('DOMContentLoaded', function() {
+            loadArtikel();
+            
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchArtikel();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
